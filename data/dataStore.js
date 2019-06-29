@@ -1,11 +1,9 @@
 const xml2js = require('xml2js');
 const axios = require('axios');
-
 /**
  * 
  */
 const dataStore = (function() {
-    
     console.log('data store required');
     const parser = new xml2js.Parser({explicitArray: false});
     let data = {};
@@ -16,10 +14,7 @@ const dataStore = (function() {
                 if (error) {
                     console.log(`xml2js Error: ${error}`)
                 } else {
-                    // console.log(result)
-                    // return result;
                     data = (result).BRANCHES.BRANCH;
-                    // data = JSON.stringify(result).BRANCHES.BRANCH;
                 }
             })
         })

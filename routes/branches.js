@@ -1,5 +1,5 @@
 const branches = require('express').Router({mergeParams: true});
-const dataStore = require('../lib/dataStore');
+const dataStore = require('../data/dataStore');
 
 // get all branches of the current bank
 branches.get('/', (request, response, next) => {

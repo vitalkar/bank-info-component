@@ -1,6 +1,6 @@
 const banks = require('express').Router();
 const branches = require('./branches');
-const dataStore = require('../lib/dataStore');
+const dataStore = require('../data/dataStore');
 
 banks.get('/', (request, response) => {
     console.log('inside GET /banks');

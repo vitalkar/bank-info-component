@@ -1,0 +1,29 @@
+<template id="bank-component-template">
+    <style>
+        .bank_component_container {
+            /* border: 1px solid black; */
+            margin: auto;
+            width: 500px;
+            height: 500px;
+            padding: 2rem;
+        }
+        .bank_component_form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <div class="bank_component_container">
+        <form class="bank_component_form" action="" method="get">
+            <label for="inp_bank">Bank</label>
+            <input id="inp_bank" type="text">
+            <label for="inp_branch">Branch</label>
+            <input id="inp_branch" type="text">
+            <input type="submit" value="submit">
+        </form>
+    </div>
+</template>
+<script src="BankComponent.js"></script>
+<link rel="import" href="BankComponent.html">
