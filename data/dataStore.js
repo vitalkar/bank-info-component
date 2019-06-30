@@ -14,7 +14,7 @@ const dataStore = (function() {
                 if (error) {
                     console.log(`xml2js Error: ${error}`)
                 } else {
-                    data = (result).BRANCHES.BRANCH;
+                    data = result.BRANCHES.BRANCH;
                 }
             })
         })
@@ -22,22 +22,26 @@ const dataStore = (function() {
             console.log(error);
         })
 
-        /**
-         *  
-         */
         function getBanks(str) {
-            console.log('Method: getBanks')
-            return data;            
+            let bankNames = new Map();
+            data.forEach((item) => {
+                const bankName = item.Bank_Name;
+                    bankCode = item.Bank_Code;
+                if (bankName.includes(str)) {
+                    bankNames.set(bankName, bankCode);
+                }
+            }) 
+            return Array.from(bankNames.entries());  
         }
+
         /**
-         * 
+         * get branches of a particular bank
          */
         function getBranches(bank) {
             if (!bank) {
                 return;
             } else {
-                const bankCode = bank.toString();
-                return data.filter((item) => item.Bank_Code === bankCode);
+                return data.filter((item) => item.Bank_Name === bank);
             }
         }
         /**
@@ -47,10 +51,12 @@ const dataStore = (function() {
             if (!bank || !branch) {
                 return;
             } else {
-                const bankCode = bank.toString(), 
-                    branchCode = branch.toString();
-                    const branches = getBranches(bankCode);
-                   return branches.find((item) => item.Branch_Code === branchCode);
+                // const bankCode = bank.toString(), 
+                //     branchCode = branch.toString();
+                    const branches = getBranches(bank);
+                    console.log(branches)
+                   return branches.find((item) => item.Branch_Name === branch);
+                
             }            
         }
 

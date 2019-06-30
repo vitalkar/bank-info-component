@@ -2,28 +2,20 @@ const banks = require('express').Router();
 const branches = require('./branches');
 const dataStore = require('../data/dataStore');
 
-banks.get('/', (request, response) => {
-    console.log('inside GET /banks');
-    const banks = dataStore.getBanks();
-    if (banks) {
-        response.status(200);
+banks.get('/:bank', (request, response) => {
+    const { bank } = request.params;
+    if (!bank) {
+        return;
+    } else {        
+        const banks = dataStore.getBanks(bank);
         response.json(banks);
-    } else {
-        response.status(500);
-        response.json({});
-        
     }
-})
+});
 
-banks.get('/:bankCode', (request, response) => {
-    const bankCode = request.params.bankCode,
-          branches = dataStore.getBranches(bankCode);
-    response.json(branches);
-})
-
-banks.use('/:bankCode/branches', (request, response, next) => {
-    request.bankCode = request.params.bankCode;
-    next()
+banks.use('/:bank/branches', (request, response, next) => {
+    // request.bankCode = request.params.bank;
+    request.bank = request.params.bank;
+    next();
 }, branches);
 
 module.exports = banks;
