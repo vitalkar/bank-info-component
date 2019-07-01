@@ -12,16 +12,21 @@ html {
 
 body {
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, rgb(100,200,213) 0%, rgb(142, 171, 189) 50%, rgb(100,200,213) 100%);
 }
 
 .container {
     width: 50%;
     height: 70%;
-    border: 1px solid black;
     margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #FFF;
+    border-radius: 1rem;
 }
 
 .form {
@@ -31,38 +36,36 @@ body {
     padding: 1rem;
     height: 10%;
     width: 100%;
+    border-bottom: 0.5px solid #cec3c3;
 }
 
 .input_container {
     position: relative;
     height: 2rem;
-    width: 30%;
+    width: 35%;
 }
 
-.input_bank, .input_branch {
+.input_bank {
     width: 100%;
     height: 100%;
     border: none;
     outline: none;
     padding: 0.5rem;
     border-bottom: 0.5px solid rgb(26, 180, 160);
-
+    background-color: #FFF;
 }
 
 
-.dropdown_bank, .dropdown_branch {
+.dropdown_bank {
     list-style-type: none;
     position: absolute;
-    background-color: #FFF;
+    background-color: rgb(221, 205, 205);
     top: 100%;
     width: 100%;
     height: auto;
     max-height: 10rem;
-    border-bottom: 0.5px solid rgb(26, 180, 160);
     z-index: 1;
     overflow: auto;
-    /* border-bottom-left-radius: 0.5rem; */
-    /* border-bottom-right-radius: 0.5rem; */
 }
 
 .dropdown_item {
@@ -72,52 +75,95 @@ body {
     display: flex;
     align-items: center;
     padding-left: 0.5rem;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #FFF;
+    margin: 1px 0;
+}
+
+.select {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    border: none;
+    background-color: #FFF;
+    border-bottom: 1px solid rgb(26, 180, 160);
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.select_item {
+    height: 2rem;
+    width: 100%;
+    padding: 0.5rem;
+    cursor: pointer;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dropdown_item:hover {
-    /* font-size: 1.1rem; */
     font-weight: 500;
     background-color: rgb(228, 217, 217);
 }
 
 .submit {
     cursor: pointer;
-    width: 4rem;
+    width: 5rem;
     height: 3rem;
     border-radius: 1rem;
     box-shadow: none;
     background-color: rgb(26, 180, 160);
     color: #FFF;
     border: none;
+    outline: none;
 }
 
 .submit:hover {
     border: 1px solid rgb(26, 180, 160);
     background-color: #FFF;
     color: rgb(26, 180, 160);
-    /* font-weight: 500; */
 }
 
 .description {
-    height: 20%;
+    height: 40%;
     width: 100%;
-    border: 1px solid black;
+    padding: 1rem;
+}
 
+.bank_info {
+    list-style-type: none;
+    width: 100%;
+    height: 100%;
+}
+
+.bank_info_item {
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.bank_info_label {
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    flex-basis: 20%;
 }
 
 .map_container {
+    border-top:  0.5px solid #cec3c3;
     width: 100%;
-    height: 70%;
-    border: 1px solid black;
+    height: 50%;
     margin: auto;
     padding: 1rem;
 }
 
-
-.bank_item {
-
+#map {
+    height: 100%;
+    width: 100%;
 }
 
-.branch_item {
-
-}

@@ -10,9 +10,7 @@ branches.get('/', (request, response) => {
 branches.get('/:branch', (request, response) => {
     const { bank } = request;
     const { branch } = request.params;
-    
     const data = dataStore.getInfo(bank, branch);
-    // response.status(200);
     response.json(data);
 });
 

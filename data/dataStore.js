@@ -4,7 +4,6 @@ const axios = require('axios');
  * 
  */
 const dataStore = (function() {
-    console.log('data store required');
     const parser = new xml2js.Parser({explicitArray: false});
     let data = {};
 
@@ -51,11 +50,8 @@ const dataStore = (function() {
             if (!bank || !branch) {
                 return;
             } else {
-                // const bankCode = bank.toString(), 
-                //     branchCode = branch.toString();
-                    const branches = getBranches(bank);
-                    console.log(branches)
-                   return branches.find((item) => item.Branch_Name === branch);
+                const branches = getBranches(bank);
+                return branches.find((item) => item.Branch_Name === branch);
                 
             }            
         }
