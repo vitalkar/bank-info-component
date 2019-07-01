@@ -13,10 +13,7 @@
         'day_closed'
     ];
     let currBankName = '';
-    let currBankCode = '';
     let currBranchName = '';
-    let currBranchCode = '';
-    let currLocation = { lat: -25.344, lng: 131.036 };
     
     const template = `
         <form class="form">
@@ -84,14 +81,12 @@
     component.setAttribute('class', 'container');
     component.innerHTML = template;
     document.body.insertBefore(component, document.getElementsByTagName('script')[0]);
-    
+    //
     const bankInput = document.querySelector('.input_bank'),
-        branchInput = document.querySelector('.input_branch'),
         bankDropdown = document.querySelector('.dropdown_bank'),
-        branchDropdown = document.querySelector('.dropdown_branch'),
         select = document.querySelector('.select'),
         buttonSubmit = document.querySelector('.submit');
-    
+    //
     function getBranches(bank) {
         fetch(`http://localhost:3000/banks/${bank}/branches/`)
             .then((response) => response.json())
@@ -107,7 +102,6 @@
                 });
             });
     }
-
     //set event listeners
     bankInput.addEventListener('input', (e) => {
         const q = e.target.value;
@@ -161,7 +155,6 @@
         }
 
     });
-
     return component;
 }())
 

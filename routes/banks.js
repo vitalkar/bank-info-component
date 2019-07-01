@@ -13,7 +13,6 @@ banks.get('/:bank', (request, response) => {
 });
 
 banks.use('/:bank/branches', (request, response, next) => {
-    // request.bankCode = request.params.bank;
     request.bank = request.params.bank;
     next();
 }, branches);
