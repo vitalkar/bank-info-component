@@ -16,6 +16,7 @@
     let currBranchName = '';
     
     const template = `
+        <h1 class="title">bank Info component</h1>
         <form class="form">
             <div class="input_container">
                 <input class="input_bank" type="text" placeholder="type bank name" />
@@ -23,7 +24,7 @@
             </div>
             <div class="input_container">
                 <select class="select">
-                     <option selected>select a branch</option>
+                     <option class="select_item" selected>choose a branch</option>
                 </select>
             </div>
             <input class="submit" type="submit" value="GO" />
@@ -91,7 +92,7 @@
         fetch(`http://localhost:3000/banks/${bank}/branches/`)
             .then((response) => response.json())
             .then((json) => {
-                select.innerHTML = '<option selected>select a branch</option>';
+                select.innerHTML = '<option class="select_item" selected>choose a branch</option>';
                 json.map((item) => {
                     const option = document.createElement('option');
                     option.setAttribute('class', 'select_item');
@@ -147,7 +148,7 @@
                         f.innerHTML = data[`${field}`];
                     });
                     bankInput.value = '';
-                    select.innerHTML = '<option selected>select a branch</option>';
+                    select.innerHTML = '<option class="select_item" selected>choose a branch</option>';
                     const lat = parseFloat(data.X_Coordinate),
                         lng = parseFloat(data.Y_Coordinate);
                     initMap({ lat: lat, lng: lng });
