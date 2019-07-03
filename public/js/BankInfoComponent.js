@@ -82,27 +82,12 @@
     component.setAttribute('class', 'container');
     component.innerHTML = template;
     document.body.insertBefore(component, document.getElementsByTagName('script')[0]);
-    //
+    
     const bankInput = document.querySelector('.input_bank'),
         bankDropdown = document.querySelector('.dropdown_bank'),
         select = document.querySelector('.select'),
         buttonSubmit = document.querySelector('.submit');
-    //
-    function getBranches(bank) {
-        fetch(`http://localhost:3000/banks/${bank}/branches/`)
-            .then((response) => response.json())
-            .then((json) => {
-                select.innerHTML = '<option class="select_item" selected>choose a branch</option>';
-                json.map((item) => {
-                    const option = document.createElement('option');
-                    option.setAttribute('class', 'select_item');
-                    option.setAttribute('data-key', item.Branch_Code);
-                    option.value = item.Branch_Name;
-                    option.innerHTML = item.Branch_Name;
-                    select.appendChild(option);
-                });
-            });
-    }
+    
     //set event listeners
     bankInput.addEventListener('input', (e) => {
         const q = e.target.value;
@@ -154,6 +139,23 @@
                     initMap({ lat: lat, lng: lng });
                 })
         }
+
+
+        function getBranches(bank) {
+            fetch(`http://localhost:3000/banks/${bank}/branches/`)
+                .then((response) => response.json())
+                .then((json) => {
+                    select.innerHTML = '<option class="select_item" selected>choose a branch</option>';
+                    json.map((item) => {
+                        const option = document.createElement('option');
+                        option.setAttribute('class', 'select_item');
+                        option.setAttribute('data-key', item.Branch_Code);
+                        option.value = item.Branch_Name;
+                        option.innerHTML = item.Branch_Name;
+                        select.appendChild(option);
+                    });
+                });
+        }    
 
     });
     return component;
